@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Download Area</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="noarchive" name="robots" />
+    <link href="/.index/images/favicon.png" rel="icon" type="image/png" />
+    <link href="/.index/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function()
+      {
+        // 1: transform table into div...
+        $('tr:has(td)').each(function()
+        {
+          var columns = $(this).find('td');
+          
+          // 1.1: extract file type...
+          if(columns.eq(0).find('img').attr('alt') == '[DIR]')
+            var filetype = (columns.eq(1).find('a').attr('href') == '/') ? 'back' : 'folder';
+          else
+            var filetype = '_' + columns.eq(1).find('a').html().split('.').pop().toLowerCase();
+          
+          // 1.2: creating html for new row...
+          var row_html  = '<div class="file ' + filetype + '">' +
+                            '<div id="name">' + columns.eq(1).html() + '</div>' +
+                            '<div id="size">' + columns.eq(3).html() + '</div>' +
+                            '<div id="date">' + columns.eq(2).html() + '</div>' +
+                          '</div>';
+                         
+          // 1.3: append, connect hover effect, and remove trailing slash...
+          $(row_html).appendTo('#files')
+                     .hover(function() { $(this).addClass   ('hover'); },
+                            function() { $(this).removeClass('hover'); })
+                     .find('a').text(function(i, text) { return text.replace(/\/$/, ''); });
+        });
+
+// 2: create breadcrumb structure...
+var clean_path = decodeURI(document.location.pathname).replace(/^\/+/, '')
+                                                      .replace(/\/+$/, '');
+
+var path    = '/';
+var crumbs  = [ { text: 'Home', type: 'home', link: '/' } ];
+
+$(clean_path.split(/\/+/)).each(function()
+{
+  path += this + '/';
+  crumbs.push( { text: this, type: 'folder', link: path } );
+});
+
+// 3: create breadcrumb html...
+var last_crumb = crumbs.pop();
+
+$(crumbs).each(function()
+{
+  $('#breadcrumb').append('<a href="' + this.link + '" class="' + this.type + '">' + this.text + '</a> ' +
+                          '<span class="separator">&raquo;</span> ');
+});
+
+$('#breadcrumb').append('<span class="' + last_crumb.type + '">' + last_crumb.text + '</span>');
+      });
+    </script>
+  </head>
+  <body>
+    <div id="content">
+      <h1 id="breadcrumb"></h1>
+      <div id="files">
+        <div class="header"><div id="icon"></div><div id="name">Name</div><div id="size">Size</div><div id="date">Modified</div></div>
+      </div>
+      <div style="display:none">
+

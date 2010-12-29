@@ -1,0 +1,195 @@
+/*
+
+  style.css                                               Copyright (C) 2010 Thomas Jansen. All Rights Reserved.
+
+  This code is provided to you pursuant to the terms and conditions set forth  in  the  evaluation  license  (or
+  subsequent license agreement) between your organization and Do Good Lab.
+
+  Author(s): Thomas Jansen (thomas.c.jansen@gmail.com)
+
+*/
+
+
+/* ---[ reset everything ]----------------------------------------------------------------------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ---[ chrome ]--------------------------------------------------------------------------------------------- */
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Lucida Grande', 'Segoe UI', 'Arial', 'Verdana', 'Lucida Sans Unicode', 'Tahoma', sans-serif;
+  font-size: 11px;
+  color: rgb(34, 34, 34);
+  background: rgb(233, 244, 255);
+  height: 100%;
+}
+
+#content {
+  background: rgb(255, 255, 255);
+  border-left: 1px solid rgb(170, 204, 238);
+  border-right: 1px solid rgb(170, 204, 238);
+  width: 654px;
+  min-height: 100%;
+  margin: 0 auto 0 auto;
+}
+
+
+/* ---[ generic ]-------------------------------------------------------------------------------------------- */
+
+img {
+  border: none;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: rgb(31, 117, 204);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* ---[ breadcrumb ]----------------------------------------------------------------------------------------- */
+
+h1 {
+  padding: 18px 24px;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 26px;
+  color: rgb(34, 34, 34);
+  background-color: rgb(244, 250, 255);
+  border-bottom: 1px solid rgb(233, 244, 255);
+}
+
+h1 .home {
+  padding: 0 4px 0 24px;
+  background: url('/.index/images/home.png') no-repeat 4px center;
+}
+
+h1 .folder {
+  padding: 0 4px 0 24px;
+  background: url('/.index/images/folder.png') no-repeat 4px center;
+}
+
+h1 .separator {
+  color: rgb(128, 128, 128);
+}
+
+
+/* ---[ files ]---------------------------------------------------------------------------------------------- */
+
+#files {
+  padding: 16px 24px 24px 24px;
+}
+
+#files .header,
+#files .file {
+  padding: 8px 8px 8px 30px;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+#files .header {
+  font-weight: bold;
+  border-bottom: 1px dotted rgb(200, 200, 200);
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+#files .header a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+#files .header a:hover {
+  color: rgb(31, 117, 204);
+}
+
+#files .file.hover {
+  background-color: rgb(250, 253, 255);
+  border: 1px solid rgb(198, 216, 223);
+}
+
+#files #name {
+  display: inline-block;
+  width: 312px;
+}
+
+#files #size {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  padding: 0 0 0 3px;
+}
+
+#files #date {
+  display: inline-block;
+  width: 148px;
+  text-align: right;
+  padding: 0 0 0 3px;
+}
+
+
+/* ---[ file types ]----------------------------------------------------------------------------------------- */
+
+.file {
+  background: url('/.index/images/unknown.png') no-repeat 8px center;
+}
+
+.file.back {
+  background: url('/.index/images/back.png') no-repeat 8px center;
+}
+
+.file.folder {
+  background: url('/.index/images/folder.png') no-repeat 8px center;
+}
+
+.file._gz,
+.file._tgz,
+.file._zip,
+.file._bz2,
+.file._rar,
+.file._7z {
+  background: url('/.index/images/compressed.png') no-repeat 8px center;
+}
+
+.file._gif,
+.file._png,
+.file._jpg {
+  background: url('/.index/images/image.png') no-repeat 8px center;
+}
+
+.file._avi,
+.file._mov,
+.file._mp4 {
+  background: url('/.index/images/movie.png') no-repeat 8px center;
+}
+
+.file._wav,
+.file._mp3,
+.file._m4a,
+.file._ogg {
+  background: url('/.index/images/sound.png') no-repeat 8px center;
+}
+
+.file._txt,
+.file._pages {
+  background: url('/.index/images/text.png') no-repeat 8px center;
+}
+
+.file._doc,
+.file._docx {
+  background: url('/.index/images/word.png') no-repeat 8px center;
+}
+
+.file._pdf {
+  background: url('/.index/images/pdf.png') no-repeat 8px center;
+}
